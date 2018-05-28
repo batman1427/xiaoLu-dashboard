@@ -1,0 +1,25 @@
+.container-fluid{
+    margin: 200px 300px;
+    font-size: 25px;
+    background-color: aliceblue;
+    border: aliceblue 30px solid;
+}
+.label_upload{
+    background-color: skyblue;
+    border: 1px solid black;
+    font-size: 23px;
+}
+.label_tips{
+    margin: auto 20px;
+    font-size: 20px;
+    color: red;
+}
+.toolbar_submit{
+    background-color:skyblue;
+    border: 1px solid black;
+    font-size: 20px;
+}
+#turn_to_screen{
+    margin: 0 0 0 500px;
+    font-size: 22px;
+}

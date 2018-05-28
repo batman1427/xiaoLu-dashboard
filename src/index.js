@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom'
 import './index.css';
-import Upload from './component/upload/Upload';
+import MainPanel  from './component/dashboard';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Upload />, document.getElementById('root'));
+ReactDOM.render(<BrowserRouter><MainPanel/></BrowserRouter>, document.getElementById('root'));
 registerServiceWorker();
