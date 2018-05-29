@@ -1,5 +1,5 @@
 .container-fluid{
-    margin: 200px 300px;
+    margin: 100px 300px;
     font-size: 25px;
     background-color: aliceblue;
     border: aliceblue 30px solid;
@@ -13,6 +13,13 @@
     margin: auto 20px;
     font-size: 20px;
     color: red;
+}
+.label_error{
+    border: 1px solid black;
+    font-size: 10px;
+    color: red;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 .toolbar_submit{
     background-color:skyblue;

@@ -17,7 +17,8 @@ class Upload extends Component {
             full_filled: false,
             order_list: null,
             filename: null,
-            tips: '选择数据文件上传'
+            tips: '选择数据文件上传',
+            error: ''
         };
     }
 
@@ -44,6 +45,9 @@ class Upload extends Component {
                         <Button className="toolbar_submit" bsStyle="success" disabled={!this.state.full_filled} onClick={this.upload}>确认上传</Button>
                         <Link id="turn_to_screen" to={'/screen'}>数据查询</Link>
                     </ButtonToolbar>
+                    <br></br>
+                    <div className="label_error" dangerouslySetInnerHTML={{__html: this.state.error}}>
+                    </div>
                 </div>
             </Panel>
         );
@@ -65,13 +69,25 @@ class Upload extends Component {
         }
     }
 
+
     upload() {
         let upload_url = 'http://127.0.0.1:8000/upload';
         let form = new FormData();
         form.set('data_file', this.state.order_list);
+        let that = this;
         axios.post(upload_url, form)
             .then(function (response) {
-                //alert(JSON.parse(JSON.stringify(response.data)).name);
+                let logs = response.data.data;
+                let error = '上传结果：';
+                error += logs[0].errorLog;
+                error += '<br />';
+                for (let i = 1; i < logs.length; i++) {
+                    error += logs[i].errorLog;
+                    error += '<br />';
+                }
+                that.setState({
+                            error: error
+                        });
             })
             .catch(() => {
                 return {responseCode: 'RESPONSE_ERROR', description: 'Fail to process the request'}
