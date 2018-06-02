@@ -5,10 +5,6 @@ import Upload from './upload/Upload'
 import Screen from './screen/Screen'
 
 class MainPanel extends React.Component{
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <div>

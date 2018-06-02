@@ -15,7 +15,7 @@ class Upload extends Component {
 
         this.state = {
             full_filled: false,
-            order_list: null,
+            file_list: null,
             filename: null,
             tips: '选择数据文件上传',
             error: ''
@@ -25,7 +25,7 @@ class Upload extends Component {
     render() {
         return (
             <Panel>
-                <div className="container-fluid">
+                <div className="container-fluid" style={{    margin: "100px 300px"}}>
                     <FormGroup>
                         <ControlLabel>请选择需要导入的数据文件(后缀为.xls或者.xlsx)</ControlLabel>
                     </FormGroup>
@@ -56,7 +56,7 @@ class Upload extends Component {
     import_file = (e) => {
         if (e.target.files !== null && e.target.files[0] !== null) {
             this.setState({
-                order_list: e.target.files[0],
+                file_list: e.target.files[0],
                 filename: e.target.files[0].name,
                 tips: '您当前选择的文件为: ' +  e.target.files[0].name
             }, this.validate)
@@ -64,7 +64,7 @@ class Upload extends Component {
     }
 
     validate = () => {
-        if (this.state.order_list !== null) {
+        if (this.state.file_list !== null) {
             this.setState({full_filled: true})
         }
     }
@@ -73,7 +73,7 @@ class Upload extends Component {
     upload() {
         let upload_url = 'http://127.0.0.1:8000/upload';
         let form = new FormData();
-        form.set('data_file', this.state.order_list);
+        form.set('data_file', this.state.file_list);
         let that = this;
         axios.post(upload_url, form)
             .then(function (response) {
