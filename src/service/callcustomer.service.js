@@ -3,8 +3,8 @@ import $ from 'jquery';
 
 const server = 'http://127.0.0.1:8000/';
 
-function fetchIntermediaryList() {
-    let url = server + 'intermediary';
+function fetchCallCustomerList() {
+    let url = server + 'callcustomer';
     return axios.get(url)
         .then(function (response) {
             if (response.status < 400) {
@@ -20,16 +20,16 @@ function fetchIntermediaryList() {
         )
 }
 
-function modifyTime(reportTime) {
-    let temp = reportTime.toString();
+function modifyTime(callTime) {
+    let temp = callTime.toString();
     let year = temp.substring(0,4);
     let month = temp.substring(4,6);
     let day = temp.substring(6, 8);
     return year+"/"+month+"/"+day;
 }
 
-function fetchNeedIntermediary(startDate, endDate) {
-    let url = server + 'intermediary/search';
+function fetchNeedCallCustomer(startDate, endDate) {
+    let url = server + 'callcustomer/search';
     let form = new FormData();
     form.set('startDate', startDate);
     form.set('endDate', endDate);
@@ -58,6 +58,6 @@ function exportFile(fileUrl){
 }
 
 
-export const intermediaryservice = {
-    fetchIntermediaryList, modifyTime, fetchNeedIntermediary, exportFile
+export const callcustomerservice = {
+    fetchCallCustomerList, modifyTime, fetchNeedCallCustomer, exportFile
 };
