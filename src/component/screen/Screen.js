@@ -4,6 +4,8 @@ import Intermediary from './Intermediary'
 import CallCustomer from './CallCustomer'
 import Extension from './Extension'
 import IncomingCall from './IncomingCall'
+import Visit from './Visit'
+import Deal from './Deal'
 import './Screen.css';
 import {Tab} from 'react-bootstrap'
 
@@ -24,8 +26,8 @@ class Screen extends React.Component {
                             <Tab.Pane eventKey="call_customer"><CallCustomer/></Tab.Pane>
                             <Tab.Pane eventKey="extension"><Extension/></Tab.Pane>
                             <Tab.Pane eventKey="incoming_call"><IncomingCall/></Tab.Pane>
-                            <Tab.Pane eventKey="visit"></Tab.Pane>
-                            <Tab.Pane eventKey="deal"></Tab.Pane>
+                            <Tab.Pane eventKey="visit"><Visit/></Tab.Pane>
+                            <Tab.Pane eventKey="deal"><Deal/></Tab.Pane>
                             <Tab.Pane eventKey="summary"></Tab.Pane>
                         </Tab.Content>
                     </div>
