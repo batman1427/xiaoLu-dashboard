@@ -105,9 +105,7 @@ export class Extension extends React.Component{
                     <ReactTable
                         data={this.state.extensionList}
                         columns = {this.state.columns}
-                        filterable
-                        defaultFilterMethod={(filter, row) =>
-                            String(row[filter.id]).includes(filter.value)}
+                        filterable={false}
                     />
                 </Panel>
             </div>

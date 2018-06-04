@@ -110,9 +110,7 @@ export class IncomingCall extends React.Component{
                     <ReactTable
                         data={this.state.incomingcallList}
                         columns = {this.state.columns}
-                        filterable
-                        defaultFilterMethod={(filter, row) =>
-                            String(row[filter.id]).includes(filter.value)}
+                        filterable={false}
                     />
                 </Panel>
             </div>

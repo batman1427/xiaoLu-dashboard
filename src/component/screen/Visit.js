@@ -31,7 +31,7 @@ export class Visit extends React.Component{
                 {Header: '职业信息', accessor : 'occupation'},
                 {Header: '认知途径', accessor : 'accessKnown'},
                 {Header: '置业目的', accessor : 'realtyPurpose'},
-                {Header: '职业类型', accessor : 'realtyType'},
+                {Header: '置业类型', accessor : 'realtyType'},
                 {Header: '关注点', accessor : 'concerns'},
                 {Header: '客户描述', accessor : 'customerDescription'},
                 {Header: '最新动态', accessor : 'latestState'},
@@ -115,9 +115,7 @@ export class Visit extends React.Component{
                     <ReactTable
                         data={this.state.visitList}
                         columns = {this.state.columns}
-                        filterable
-                        defaultFilterMethod={(filter, row) =>
-                            String(row[filter.id]).includes(filter.value)}
+                        filterable={false}
                     />
                 </Panel>
             </div>

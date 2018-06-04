@@ -111,9 +111,10 @@ export class CallCustomer extends React.Component{
                     <ReactTable
                         data={this.state.callCustomerList}
                         columns = {this.state.columns}
-                        filterable
+                        filterable={false}
+                        /*filterable
                         defaultFilterMethod={(filter, row) =>
-                            String(row[filter.id]).includes(filter.value)}
+                            String(row[filter.id]).includes(filter.value)}*/
                     />
                 </Panel>
             </div>

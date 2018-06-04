@@ -107,9 +107,7 @@ export class Intermediary extends React.Component{
                     <ReactTable
                         data={this.state.intermediaryList}
                         columns = {this.state.columns}
-                        filterable
-                        defaultFilterMethod={(filter, row) =>
-                            String(row[filter.id]).includes(filter.value)}
+                        filterable={false}
                     />
                 </Panel>
             </div>
