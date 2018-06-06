@@ -86,13 +86,15 @@ export class Extension extends React.Component{
                 <div className="extension" style={{marginLeft: "0px", display: "flex"}}>
                     <div style={{width: "30%", marginRight: "20px"}}>
                         <div className="col-md-6 form-input">
+                            起始时间
                             <input id="startDate" type="date" ref="startDate" placeholder="起始时间"></input>
                         </div>
                         <div className="col-md-6 form-input">
+                            结束时间
                             <input id="endDate" type="date" ref="endDate" placeholder="结束时间"></input>
                         </div>
                     </div>
-                    <div style={{width: "12%"}}>
+                    <div style={{width: "12%", paddingTop: "17px"}}>
                         <button id="search_btn" type="button" onClick={this.fetch}>
                             查询
                         </button>

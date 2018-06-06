@@ -30,11 +30,21 @@ function modifyTime(allTime) {
     }
 }
 
-function fetchNeedSummary(startDate, endDate) {
+function fetchNeedSummary(callStartDate, callEndDate, visitStartDate, visitEndDate, dealStartDate, dealEndDate, smallarea, bigarea, lowprice, highprice, area_list, accesspath_list) {
     let url = server + 'summary/search';
     let form = new FormData();
-    form.set('startDate', startDate);
-    form.set('endDate', endDate);
+    form.set('callStartDate', callStartDate);
+    form.set('callEndDate', callEndDate);
+    form.set('visitStartDate', visitStartDate);
+    form.set('visitEndDate', visitEndDate);
+    form.set('dealStartDate', dealStartDate);
+    form.set('dealEndDate', dealEndDate);
+    form.set('smallarea', smallarea);
+    form.set('bigarea', bigarea);
+    form.set('lowprice', lowprice);
+    form.set('highprice', highprice);
+    form.set('area_list', area_list);
+    form.set('accesspath_list', accesspath_list);
     return axios.post(url, form)
         .then(function (response) {
             if (response.status < 400) {

@@ -101,9 +101,19 @@ export class Summary extends React.Component{
     }
 
     fetch() {
-        let startDate = this.refs.startDate.value;
-        let endDate = this.refs.endDate.value;
-        summaryservice.fetchNeedSummary(startDate, endDate)
+        let callStartDate = this.refs.callStartDate.value;
+        let callEndDate = this.refs.callEndDate.value;
+        let visitStartDate = this.refs.visitStartDate.value;
+        let visitEndDate = this.refs.visitEndDate.value;
+        let dealStartDate = this.refs.dealStartDate.value;
+        let dealEndDate = this.refs.dealEndDate.value;
+        let smallarea = this.refs.smallarea.value;
+        let bigarea = this.refs.bigarea.value;
+        let lowprice = this.refs.lowprice.value;
+        let highprice = this.refs.highprice.value;
+        let area_list = this.refs.area_list.value;
+        let accesspath_list = this.refs.accesspath_list.value;
+        summaryservice.fetchNeedSummary(callStartDate, callEndDate, visitStartDate, visitEndDate, dealStartDate, dealEndDate, smallarea, bigarea, lowprice, highprice, area_list, accesspath_list)
             .then(
                 (result) => {
                     if (result.responseCode === 'RESPONSE_OK') {
@@ -136,15 +146,75 @@ export class Summary extends React.Component{
         return (
             <div style={{marginTop: "20px"}}>
                 <div className="summary_screen" style={{marginLeft: "0px", display: "flex"}}>
-                    <div style={{width: "30%", marginRight: "20px"}}>
+                    <div style={{width: "30%", marginRight: "1px"}}>
                         <div className="col-md-6 form-input">
-                            <input id="startDate" type="date" ref="startDate" placeholder="起始时间"></input>
+                            来电起始时间
+                            <input id="callStartDate" type="date" ref="callStartDate" placeholder="起始时间"></input>
                         </div>
                         <div className="col-md-6 form-input">
-                            <input id="endDate" type="date" ref="endDate" placeholder="结束时间"></input>
+                            来电结束时间
+                            <input id="callEndDate" type="date" ref="callEndDate" placeholder="结束时间"></input>
+                        </div>
+                        <div className="col-md-6 form-input">
+                            来访起始时间
+                            <input id="visitStartDate" type="date" ref="visitStartDate" placeholder="起始时间"></input>
+                        </div>
+                        <div className="col-md-6 form-input">
+                            来访结束时间
+                            <input id="visitEndDate" type="date" ref="visitEndDate" placeholder="结束时间"></input>
+                        </div>
+                        <div className="col-md-6 form-input">
+                            成交起始时间
+                            <input id="dealStartDate" type="date" ref="dealStartDate" placeholder="起始时间"></input>
+                        </div>
+                        <div className="col-md-6 form-input">
+                            成交结束时间
+                            <input id="dealEndDate" type="date" ref="dealEndDate" placeholder="结束时间"></input>
+                        </div>
+                    </div>
+                    <div style={{width: "30%"}}>
+                        <div className="col-md-6 form-input">
+                            最小意向面积
+                            <input id="smallarea" type="number" ref="smallarea" placeholder="最小意向面积"></input>
+                        </div>
+                        <div className="col-md-6 form-input">
+                            最大意向面积
+                            <input id="bigarea" type="number" ref="bigarea" placeholder="最大意向面积"></input>
+                        </div>
+                        <div className="col-md-6 form-input">
+                            最低接受价位
+                            <input id="lowprice" type="number" ref="lowprice" placeholder="最低接受价位"></input>
+                        </div>
+                        <div className="col-md-6 form-input">
+                            最高接受价位
+                            <input id="highprice" type="number" ref="highprice" placeholder="最高接受价位"></input>
                         </div>
                     </div>
                     <div style={{width: "12%"}}>
+                        <div>
+                            <select id="area_list" ref="area_list" style={{marginTop: "15px", marginBottom: "20px"}}>
+                                <option>---请选择区域---</option>
+                                <option>鼓楼区</option>
+                                <option>浦口区</option>
+                                <option>玄武区</option>
+                                <option>雨花区</option>
+                                <option>秦淮区</option>
+                                <option>建邺区</option>
+                                <option>栖霞区</option>
+                                <option>江宁区</option>
+                                <option>六合区</option>
+                                <option>溧水区</option>
+                                <option>高淳区</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="accesspath_list" ref="accesspath_list" style={{marginBottom: "20px", minWidth: "128px"}}>
+                                <option>---获知途径---</option>
+                                <option>自然来访</option>
+                                <option>全民营销</option>
+                                <option>中介</option>
+                            </select>
+                        </div>
                         <button id="search_btn" type="button" onClick={this.fetch}>
                             查询
                         </button>
