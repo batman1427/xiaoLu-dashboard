@@ -50,6 +50,7 @@ function fetchNeedCallCustomer(startDate, endDate) {
 }
 
 function exportFile(fileUrl){
+    console.log(fileUrl);
     let url = server + 'export';
     let fileName = fileUrl;
     var form = $("<form></form>").attr("action", url).attr("method", "post");

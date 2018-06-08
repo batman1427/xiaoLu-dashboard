@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {Button, ButtonToolbar, ControlLabel, FormControl, FormGroup, Panel} from 'react-bootstrap'
 import axios from 'axios'
 import './Upload.css';
+import {adminservice} from '../../service/admin.service'
 
 class Upload extends Component {
 
     constructor(props) {
         super(props);
-
         this.import_file = this.import_file.bind(this);
         this.validate = this.validate.bind(this);
         this.upload = this.upload.bind(this);
 
+        let access_token = localStorage.getItem('access_token');
+        if (access_token === undefined || access_token === null) {
+            props.history.push('/');
+        }
+        adminservice.check(access_token, props);
         this.state = {
             full_filled: false,
             file_list: null,
@@ -97,7 +102,7 @@ class Upload extends Component {
 
 }
 
-export default Upload;
+export default withRouter(Upload)
 
 
 

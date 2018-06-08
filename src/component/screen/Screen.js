@@ -9,10 +9,17 @@ import Deal from './Deal'
 import Summary from './Summary'
 import './Screen.css';
 import {Tab} from 'react-bootstrap'
+import {withRouter} from 'react-router-dom'
+import {adminservice} from '../../service/admin.service'
 
 class Screen extends React.Component {
     constructor(props) {
         super(props);
+        let access_token = localStorage.getItem('access_token');
+        if (access_token === undefined || access_token === null) {
+            props.history.push('/');
+        }
+        adminservice.check(access_token, props);
         this.state = {};
     }
 
@@ -38,4 +45,4 @@ class Screen extends React.Component {
     }
 }
 
-export default Screen
+export default withRouter(Screen)
